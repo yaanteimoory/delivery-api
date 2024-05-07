@@ -11,8 +11,8 @@ version = 1
 def response(resp: Response, data=None, overwrite_code: int | None = None):
     if isinstance(data, pyodbc.Error):
         status = 0
-        error = data.args[0]
-        msg = f"Error in database {data.args[0]}"
+        error = data.args
+        msg = f"خطا در ارتباط با دیتابیس: {data.args[0]}"
         data = {}
         code = 505
     elif isinstance(data, str):
@@ -30,7 +30,7 @@ def response(resp: Response, data=None, overwrite_code: int | None = None):
     if overwrite_code:
         code = overwrite_code
 
-    resp.status_code = code
+#     resp.status_code = code
     return json(status, error, msg, data)
 
 
@@ -71,35 +71,35 @@ async def login(req: Request, res: Response):
     if "password" in body:
         password = body["password"]
     else:
-        return response(res, "Password Required")
+        return response(res, "کلمه عبور مشخص نشده است.")
 
     if not _verify_phone(phone):
-        return response(res, "Invalid Phone")
+        return response(res, "شماره تلفن اشتباه است.")
 
     if not isinstance(password, int):
-        return response(res, "Invalid Password")
+        return response(res, "کلمه عبور اشتباه است.")
 
     user = db.get_user(phone, password)
     if user:
         return response(res, user)
     else:
-        return response(res, "Invalid Phone Or Password", 404)
+        return response(res, "کاربر یافت نشد. اطلاعات ورودی را بررسی کنید.", 404)
 
 
 @app.get(f"/v{version}/parcel")
 async def check_parcel_code(code, res: Response):
     if code is None:
-        return response(res, "Code Required")
+        return response(res, "کد تحویل مشخص نشده است.")
 
     if not code.isdigit():
-        return response(res, "Code is number")
+        return response(res, "کد تحویل باید عدد باشد")
 
     parcel = db.get_parcel(int(code))
 
     if parcel:
         return response(res, parcel)
     else:
-        return response(res, "Not Found", 404)
+        return response(res, "کد تحویل یافت نشد.", 404)
 
 
 @app.post(f"/v{version}/parcel")
@@ -108,12 +108,12 @@ async def deliver_parcel(req: Request, res: Response):
     if "id" in body:
         p_id = body["id"]
     else:
-        return response(res, "Id Required")
+        return response(res, "شناسه محصول مشخص نشده است.")
 
     if "user_id" in body:
         u_id = body["user_id"]
     else:
-        return response(res, "User Required")
+        return response(res, "شناسه کاربر مشخص نشده است.")
 
     result = db.set_parcel_delivered(p_id, u_id)
     return response(res, result)

@@ -6,7 +6,7 @@ server = '89.165.36.23'
 # database = 'venan_dlv'
 sql_user = 'sms'
 sql_pass = 'bsh78753'
-conn_str = f'DRIVER=ODBC Driver 11 for SQL Server;SERVER={server};UID={sql_user};PWD={sql_pass}'
+conn_str = f'DRIVER=ODBC Driver 13 for SQL Server;SERVER={server};UID={sql_user};PWD={sql_pass}'
 
 
 def get_connection():
@@ -53,7 +53,7 @@ def get_user(phone: str, password: int) -> dict | pyodbc.Error | None:
 
 
 def get_parcel(code: int) -> dict | pyodbc.Error | None | str:
-    cursor = execute_query("SELECT [EtID] as id,[comment] as 'description',[regdatetime] "
+    cursor = execute_query("SELECT [EtID] as id, [DeliverCode] as 'code', [comment] as 'description', [regdatetime] "
                            " FROM [SmsService].[dbo].[SmsSend] "
                            " WHERE [DeliverCode] = ?",
                            code)
@@ -65,12 +65,12 @@ def get_parcel(code: int) -> dict | pyodbc.Error | None | str:
     cursor.close()
     # row[row.cursor_description.]
     if row:
-        print(row.cursor_description[2])
-        if row[2] is None:
+    #     print(row.cursor_description[2])
+        if row[3] is None:
             columns = [column[0] for column in row.cursor_description][:-1]
             return dict(zip(columns, row))
         else:
-            return "Code is used already"
+            return "این کد قبلا استفاده شده است."
 
     else:
         return row
