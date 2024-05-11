@@ -6,7 +6,7 @@ server = '89.165.36.23'
 # database = 'venan_dlv'
 sql_user = 'sms'
 sql_pass = 'bsh78753'
-conn_str = f'DRIVER=ODBC Driver 13 for SQL Server;SERVER={server};UID={sql_user};PWD={sql_pass}'
+conn_str = f'DRIVER=ODBC Driver 17 for SQL Server;SERVER={server};UID={sql_user};PWD={sql_pass}'
 
 
 def get_connection():

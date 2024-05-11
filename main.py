@@ -2,8 +2,19 @@ import pyodbc
 from fastapi import FastAPI, Request, Response
 import database as db
 import re
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+origins = ["*"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 version = 1
 
