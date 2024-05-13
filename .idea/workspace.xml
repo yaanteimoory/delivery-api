@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ae535734-a179-4993-9904-cfccd1a88811" name="Changes" comment="first commit. build up project">
+    <list default="true" id="ae535734-a179-4993-9904-cfccd1a88811" name="Changes" comment="compatible sql server for docker,&#10;compatible server for CORE">
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dockerfile-ignored.text" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/database.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,10 +37,11 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;FastAPI.delivery-fastapi.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;F:/jahan/Tutorial/delivery-api/app.py&quot;,
+    &quot;last_opened_file_path&quot;: &quot;F:/jahan/Tutorial/delivery-fastapi&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -91,7 +93,10 @@
       <option name="presentableId" value="Default" />
       <updated>1714972845138</updated>
       <workItem from="1714972890884" duration="6198000" />
-      <workItem from="1715076698784" duration="1378000" />
+      <workItem from="1715076698784" duration="7432000" />
+      <workItem from="1715428897928" duration="5294000" />
+      <workItem from="1715584743564" duration="1659000" />
+      <workItem from="1715604605150" duration="1572000" />
     </task>
     <task id="LOCAL-00001" summary="first commit. build up project">
       <option name="closed" value="true" />
@@ -101,7 +106,23 @@
       <option name="project" value="LOCAL" />
       <updated>1714987753952</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="make messages persian">
+      <option name="closed" value="true" />
+      <created>1715088447467</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1715088447467</updated>
+    </task>
+    <task id="LOCAL-00003" summary="compatible sql server for docker,&#10;compatible server for CORE">
+      <option name="closed" value="true" />
+      <created>1715432544257</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1715432544257</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -109,6 +130,11 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first commit. build up project" />
-    <option name="LAST_COMMIT_MESSAGE" value="first commit. build up project" />
+    <MESSAGE value="make messages persian" />
+    <MESSAGE value="compatible sql server for docker,&#10;compatible server for CORE" />
+    <option name="LAST_COMMIT_MESSAGE" value="compatible sql server for docker,&#10;compatible server for CORE" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/delivery_fastapi$delivery_fastapi.coverage" NAME="delivery-fastapi Coverage Results" MODIFIED="1715433348910" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>
