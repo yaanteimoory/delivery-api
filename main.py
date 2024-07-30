@@ -1,4 +1,5 @@
 import pyodbc
+import uvicorn
 from fastapi import FastAPI, Request, Response
 import database as db
 import re
@@ -41,7 +42,7 @@ def response(resp: Response, data=None, overwrite_code: int | None = None):
     if overwrite_code:
         code = overwrite_code
 
-#     resp.status_code = code
+    #     resp.status_code = code
     return json(status, error, msg, data)
 
 
@@ -133,3 +134,7 @@ async def deliver_parcel(req: Request, res: Response):
 async def _verify_phone(phone):
     pattern = r'^09\d{9}$'
     return re.match(pattern, phone)
+
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)

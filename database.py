@@ -2,11 +2,11 @@ from datetime import datetime
 
 import pyodbc
 
-server = '89.165.36.23'
+server = '89.34.169.51'
 # database = 'venan_dlv'
 sql_user = 'sms'
 sql_pass = 'bsh78753'
-conn_str = f'DRIVER=ODBC Driver 17 for SQL Server;SERVER={server};UID={sql_user};PWD={sql_pass}'
+conn_str = f'DRIVER=ODBC Driver 11 for SQL Server;SERVER={server};UID={sql_user};PWD={sql_pass}'
 
 
 def get_connection():
@@ -65,7 +65,7 @@ def get_parcel(code: int) -> dict | pyodbc.Error | None | str:
     cursor.close()
     # row[row.cursor_description.]
     if row:
-    #     print(row.cursor_description[2])
+        #     print(row.cursor_description[2])
         if row[3] is None:
             columns = [column[0] for column in row.cursor_description][:-1]
             return dict(zip(columns, row))
@@ -86,4 +86,3 @@ def set_parcel_delivered(p_id: int, user_id: int) -> pyodbc.Error | None:
     cursor.commit()
     cursor.close()
     return None
-
